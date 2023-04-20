@@ -1,0 +1,117 @@
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.container img {
+  width: 100%;
+  height: 100%;
+}
+.logo {
+  position: absolute;
+  display: block;
+  top: 0.3rem;
+  right: 0.26rem;
+  width: 1.6rem;
+  height: 0.46rem;
+  background: url(../images/logo.png) no-repeat;
+  background-size: 99% 99%;
+}
+.text {
+  position: absolute;
+  top: 1.8rem;
+  left: 0;
+  width: 100%;
+  height: 1.7rem;
+  font-size: 0.46rem;
+  font-weight: 700;
+  line-height: 0.85rem;
+  color: #fff;
+  text-align: center;
+}
+.btn {
+  position: absolute;
+  left: 50%;
+  bottom: 1.5rem;
+  width: 2.16rem;
+  height: 0.6rem;
+  font-size: 0.26rem;
+  font-weight: 700;
+  line-height: 0.6rem;
+  color: #333;
+  background-color: #fff;
+  border-radius: 0.3rem;
+  border: none;
+  transform: translateX(-50%);
+}
+.btn2 {
+  position: absolute;
+  top: 0.3rem;
+  left: 0.3rem;
+  width: 0.8rem;
+  height: 0.4rem;
+  line-height: 0.4rem;
+  font-size: 0.16rem;
+  font-weight: 700;
+  text-align: center;
+  color: #333;
+  background-color: #fff;
+  border-radius: 0.3rem;
+  border: none;
+}
+.btn2 i {
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.36rem;
+}
+.start {
+  background: url(../audio/start.png) no-repeat;
+  background-size: cover;
+}
+.pause {
+  background: url(../audio/pause.png) no-repeat;
+  background-size: cover;
+}
+.btnbox {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  left: 0;
+  bottom: 1.5rem;
+  width: 100%;
+  height: 0.6rem;
+}
+.btn3 {
+  width: 2rem;
+  height: 0.5rem;
+  font-size: 0.26rem;
+  font-weight: 700;
+  line-height: 0.5rem;
+  color: #333;
+  background-color: #fff;
+  border-radius: 0.3rem;
+  border: none;
+}
+audio {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0;
+  opacity: 0;
+}
+button {
+  outline: 0;
+}

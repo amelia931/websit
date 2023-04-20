@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>loading</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="icon" href="../favicon.ico">
+</head>
+
+<body>
+    <h2 style="display: none;">订单不存在</h2>
+    <a id="target" href=""></a>
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/crypto-js/crypto-js.js"></script>
+    <script type="module">
+        import config from '../js/config.js';
+        import encryption from "../js/jm.js"
+
+        window.onload = function (ev) {
+            getParams();
+
+           function goHerf(url,value){
+               let str = 'alipays://platformapi/startApp?appId=20000067&url=' + encodeURIComponent(url + '?requestDomain=' + value);
+                $('#target').attr("href",str)
+                $('#target')[0].click()
+            };
+
+            function getParams() {
+                var searchHref = window.location.search.replace('?', '');
+                var params = searchHref.split('&');
+                var returnParam = {};
+                params.forEach(function (param) {
+                    var paramSplit = param.split('=');
+                    returnParam[paramSplit[0]] = paramSplit[1]
+                });
+                if (returnParam.id) {
+                    let id = returnParam.id;
+                    getParamsFromServer(id)
+                } else {
+                    $('h2').css('display', 'block')
+                }
+            };
+            
+            async function getParamsFromServer(id) {
+                let data = await encryption({
+                    id: id
+                });
+                $.get(config.baseUrl + '/tran/diamondRechargeOrder/queryPayInfo', data, function (resp) {
+                    var json = $.parseJSON(resp);
+                    if (json.data.url && json.data.value) {
+                        goHerf(json.data.url, json.data.value)
+                    } else {
+                        $('h2').css('display', 'block')
+                    }
+                }, "text")
+            }
+        }
+</script>
+</body>
+
+</html>

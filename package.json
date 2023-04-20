@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "obf": "javascript-obfuscator ./src/js --config ./obfuscator-config.json --output ./dist/js",
+    "watch:sass": "sass --watch ./src/scss:./dist/css",
+    "sass": "sass ./src/scss:./dist/css"
+  },
+  "devDependencies": {
+    "javascript-obfuscator": "^3.2.7",
+    "sass": "^1.57.1"
+  }
+}

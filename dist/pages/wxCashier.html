@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>支付</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="icon" href="../favicon.ico">
+    <script src="../js/reset_m.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .dialog {
+            width: 3rem;
+            height: 1rem;
+            border-radius: .2rem;
+            line-height: 1rem;
+            font-size: .26rem;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            z-index: 100;
+            display: none;
+        }
+
+
+        .page {
+            width: 100vw;
+            height: calc(100vh - .5rem);
+            padding-top: .5rem;
+            background: #f7f7f7;
+            display: none;
+        }
+
+        .value {
+            font-size: .35rem;
+            font-weight: bold;
+            color: #000000;
+            text-align: center;
+            line-height: .86rem;
+            padding: 0 .2rem;
+        }
+
+        .rmb {
+            height: .80rem;
+            line-height: .80rem;
+            color: #000000;
+            text-align: center;
+            margin-bottom: .52rem;
+            word-spacing: 0;
+        }
+
+        .tag {
+            font-size: .50rem;
+            font-weight: bold;
+            font-style: normal;
+            position: relative;
+            left: .1rem;
+            top: -0.05rem;
+        }
+
+        .rmbNum {
+            font-size: .60rem;
+            font-weight: bold;
+            position: relative;
+            right: .2rem;
+        }
+
+        .getPart {
+            width: 100%;
+            height: .95rem;
+            background: #ffffff;
+            line-height: .95rem;
+            font-size: .28rem;
+            font-weight: bold;
+            border-top: .01rem solid #dfdfdf;
+            border-bottom: .01rem solid #dfdfdf;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: .65rem;
+        }
+
+        .getPart1 {
+            color: #737373;
+            margin-left: .42rem;
+        }
+
+        .getPart2 {
+            color: #080808;
+            margin-right: .42rem;
+        }
+
+        .btn {
+            margin: 0 auto;
+            width: 96%;
+            height: 1.00rem;
+            line-height: 1.00rem;
+            background: #08c060;
+            text-align: center;
+            font-size: .30rem;
+            font-weight: bold;
+            color: #fdfffe;
+            border-radius: .10rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="value">1000钻石充值</div>
+        <div class="rmb">
+            <i class="tag">￥</i>
+            <span class="rmbNum">
+                1.00
+            </span>
+        </div>
+        <!-- <div class="getPart">
+            <div class="getPart1">收款方</div>
+            <div class="getPart2">声优圈</div>
+        </div> -->
+        <div class="btn">立即支付</div>
+    </div>
+    <div class="dialog"></div>
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/crypto-js/crypto-js.js"></script>
+
+    <script type="module">
+        import config from '../js/config.js';
+        import encryption from "../js/jm.js";
+
+        let weixinJson = undefined;
+
+        $('.btn').on('click', () => {
+            onBridgeReady();
+        });
+
+        setVal('100钻石充值', '1.00') // 设置初始值
+        getParams();
+
+        /* ----- 设置页面信息 ----- */
+        function setVal(s1, s2) {
+            $('.value').html(s1);
+            $('.rmbNum').html(s2);
+        };
+
+        /* ----- 获取参数 ----- */
+        function getParams() {
+            var searchHref = window.location.search.replace('?', '');
+            var params = searchHref.split('&');
+            var returnParam = {};
+            params.forEach(function (param) {
+                var paramSplit = param.split('=');
+                returnParam[paramSplit[0]] = paramSplit[1];
+            });
+            if (returnParam.applet) {
+                window.location.href = window.atob(returnParam.applet);
+            } else {
+                getTradeNOFromServer(returnParam);
+            };
+        };
+
+        /* ----- 获取订单号 ----- */
+        async function getTradeNOFromServer(returnParam) {
+            let data = await encryption({
+                id: returnParam.id != undefined ? returnParam.id : returnParam.state,
+                authCode: returnParam.auth_code != undefined ? returnParam.auth_code : returnParam.code
+            });
+            try {
+                $.get(config.baseUrl + '/tran/diamondRechargeOrder/queryJSPayInfo', data, function (resp) {
+                    var jsondata = $.parseJSON(resp).data;
+                    weixinJson = JSON.parse(jsondata.result);
+                    setVal(jsondata.subject, jsondata.price);
+                    $(".page").show();
+                    if (typeof WeixinJSBridge == "undefined") {
+                        if (document.addEventListener) {
+                            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                        } else if (document.attachEvent) {
+                            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                        }
+                    } else {
+                        onBridgeReady();
+                    }
+                }, "text");
+            } catch (e) {
+                alert(e);
+            };
+        };
+
+        /* -----微信支付 ----- */
+        function onBridgeReady() {
+            let datas = weixinJson;
+            WeixinJSBridge.invoke('getBrandWCPayRequest', {
+                "appId": datas.appId,
+                "timeStamp": datas.timeStamp,
+                "nonceStr": datas.nonceStr,
+                "package": datas.package,
+                "signType": datas.signType,
+                "paySign": datas.paySign
+            }, function (res) {
+                if (res.err_msg == "get_brand_wcpay_request:ok") {
+                    $('.dialog').toggle().html('支付成功');
+                    setTimeout(() => {
+                        $('.dialog').toggle();
+                    }, 1000);
+                } else if (res.err_msg == "get_brand_wcpay_request:cancel") {
+                    $('.dialog').toggle().html('支付取消');
+                    setTimeout(() => {
+                        $('.dialog').toggle();
+                    }, 1000);
+                } else if (res.err_msg == "get_brand_wcpay_request:fail") {
+                    $('.dialog').toggle().html('支付失败');
+                    setTimeout(() => {
+                        $('.dialog').toggle()
+                    }, 1000);
+                } else if (res.err_msg == "调用支付JSAPI缺少参数：total_fee") {
+                    $('.dialog').toggle().html('prepay_id是否已失效');
+                    setTimeout(() => {
+                        $('.dialog').toggle();
+                    }, 1000);
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

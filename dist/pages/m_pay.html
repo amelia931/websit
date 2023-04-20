@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>声优圈-语音聊天交友大神陪练组队开黑</title>
+    <script src="../js/reset_m.js"></script>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/m_public.css" />
+    <link rel="stylesheet" href="../css/m_pay.css" />
+    <link rel="icon" href="../favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta
+      name="keywords"
+      content="声优圈,声优圈互动,陪玩,语音交友,开黑,连麦,同城交友,游戏陪玩,手游公会,开黑语音,美女交友,交友约会,吃鸡开黑,王者荣耀开黑,绝地求生陪玩,LOL陪玩，王者荣耀陪玩,英雄联盟陪玩,游戏,陪练,线上陪练,直播,聊天室，声优，真人，比心陪练，tt语音"
+    />
+    <meta
+      name="description"
+      content="声优圈app。是一款通过“语音连麦互动，陌生人语音交友，游戏上分陪练的社交类app。高能陪练甜蜜双排，国服最强王者带你上分。大神在线一对一指导，美女声优连麦互动，还有连麦狂欢趴语音K歌，谁是卧底、狼人杀、你画我猜等超多趣味玩法”"
+    />
+  </head>
+
+  <body>
+    <header class="white-bg">
+      <i></i>
+      <h1>充值</h1>
+      <div class="navBtn">
+        <span></span>
+        <span></span>
+      </div>
+    </header>
+    <div class="containner">
+      <div class="cell c1">
+        <span>充值ID</span>
+        <input id="id-input" type="text" placeholder="请输入声优圈ID号" />
+        <em class="warn">提示</em>
+      </div>
+      <div class="cell">
+        <span>充值类型</span>
+        <span class="diaminod-frame">钻石充值</span>
+        <em>平台钻石充值用于打赏、邀约、发红包等</em>
+      </div>
+
+      <div class="cell">
+        <span>选择充值额度</span>
+        <ul>
+          <li val="" id="-1"><input id="custom-price" type="text" placeholder="自定义充值金额" /></li>
+        </ul>
+      </div>
+      <div class="cell">
+        <span>支付方式</span>
+        <div class="pay-way-box"></div>
+        <a class="guild-recharge-box" href="https://recharge-dev.iamdola.com/#/">
+          <img class="icon" src="../images/guildRechargeIcon.png" />
+          <span>代充值</span>
+        </a>
+      </div>
+      <div class="agreeXyBox">
+        <i id="agreeXyCheck" class="checked"></i>
+        <span>
+          我已阅读同意
+          <a href="https://app-h5.scmingrizhixing.cn/#/pages/Recharge_xy/Recharge_xy" style="color: #b69ef8">
+            《充值服务协议》
+          </a>
+        </span>
+      </div>
+      <button id="submit-btn">确定支付1元</button>
+    </div>
+    <div class="dialog">请在浏览器中打开下载</div>
+    <div class="wating"></div>
+    <div class="fail-network">
+      <p>数据请求失败，请刷新页面或者联系客服处理</p>
+    </div>
+    <div class="navMask">
+      <p><a id="navBtn1">首页&emsp;></a></p>
+      <p><a id="navBtn2">关于我们&emsp;></a></p>
+      <p class="weixin">
+        <img src="../images/weixinerweima.jpg" alt="" />
+        微信公众号
+      </p>
+    </div>
+
+    <div class="weixinMask"></div>
+
+    <div class="resMaskS">
+      <div class="title">
+        <i></i>
+        <span>支付成功</span>
+      </div>
+      <p class="resPrice"><i>￥</i><span class="resPriceValue">1.00</span></p>
+      <div class="resMaskSBtn">完成</div>
+    </div>
+
+    <div class="resMaskF">
+      <div class="innder">
+        <i></i>
+        <p>订单已取消</p>
+        <div class="resMaskFBtn">确定</div>
+      </div>
+    </div>
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/crypto-js/crypto-js.js"></script>
+    <script type="module" src="../js/m_pay.js"></script>
+    <!-- <script type="module" src="../../src/js/m_pay.js"></script> -->
+    <!-- <script src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"></script>
+    <script>
+      new VConsole();
+    </script> -->
+  </body>
+</html>

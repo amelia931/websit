@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>收银台</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="icon" href="../favicon.ico">
+    <script src="../js/reset_m.js"></script>
+    <style>
+        body {
+            text-align: center;
+            padding-top: 50px;
+            background-color: #aaa;
+        }
+
+        .wating {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: url(../images/wait.gif) rgba(0, 0, 0, 0.3) no-repeat;
+            background-size: 1rem 1rem;
+            background-position: center;
+            z-index: 100;
+        }
+
+        .dialog {
+            width: 3rem;
+            height: 1rem;
+            border-radius: .2rem;
+            line-height: 1rem;
+            font-size: .26rem;
+            text-align: center;
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            z-index: 100;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dialog"></div>
+    <div class="wating"></div>
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/crypto-js/crypto-js.js"></script>
+
+    <script type="module">
+        import config from '../js/config.js';
+        import encryption from "../js/jm.js";
+
+        let weixinJson = undefined;
+
+        getParams();
+
+        /* ----- 获取参数 ----- */
+        function getParams() {
+            var searchHref = window.location.search.replace('?', '');
+            var params = searchHref.split('&');
+            var returnParam = {};
+            params.forEach(function (param) {
+                var paramSplit = param.split('=');
+                returnParam[paramSplit[0]] = paramSplit[1];
+            });
+            if(returnParam.applet){
+                window.location.href = window.atob(returnParam.applet);
+            }else{
+                getTradeNOFromServer(returnParam);
+            }
+        };
+
+        /* ----- 获取订单号 ----- */
+        async function getTradeNOFromServer(returnParam) {
+            let data = await encryption({
+                id: returnParam.id != undefined ? returnParam.id : returnParam.state,
+                authCode: returnParam.auth_code != undefined ? returnParam.auth_code : returnParam.code
+            });
+            try {
+                $.get(config.baseUrl + '/tran/diamondRechargeOrder/queryJSPayInfo', data, function (resp) {
+                    var jsondata = $.parseJSON(resp).data;
+                    if (jsondata.type == 1) { // 支付宝支付
+                        tradePay(jsondata.result);
+                        $('.wating').toggle();
+                        document.querySelector('body').style.backgroundColor = '#fff';
+                    } else if (jsondata.type == 2) { // 跳转
+                        window.location.href = jsondata.result;
+                    } else if (jsondata.type == 3) { // 微信支付
+                        weixinJson = JSON.parse(jsondata.result);
+                        if (typeof WeixinJSBridge == "undefined") {
+                            if (document.addEventListener) {
+                                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                            } else if (document.attachEvent) {
+                                document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                            }
+                        } else {
+                            onBridgeReady();
+                        }
+                    } else if (jsondata.type == 4) { // 支付宝表单
+                        let data = jsondata.result;
+                        const div = document.createElement('divform');
+                        div.innerHTML = data;
+                        document.body.appendChild(div);
+                        div.style.display = 'none';
+                        document.forms[0].submit();
+                    } else {
+                        alert('支付失败');
+                        $('.dialog').toggle().html('支付失败');
+                    }
+                }, "text");
+            } catch (e) {
+                alert(e);
+            }
+        }
+
+        /* ----- 微信支付 ----- */
+        function onBridgeReady() {
+            $('.wating').toggle();
+            let datas = weixinJson;
+            WeixinJSBridge.invoke('getBrandWCPayRequest', {
+                "appId": datas.appId,
+                "timeStamp": datas.timeStamp,
+                "nonceStr": datas.nonceStr,
+                "package": datas.package,
+                "signType": datas.signType,
+                "paySign": datas.paySign
+            }, function (res) {
+                if (res.err_msg == "get_brand_wcpay_request:ok") {
+                    $('.dialog').toggle().html('支付成功');
+                    setTimeout(() => {
+                        $('.dialog').toggle();
+                    }, 1000);
+                } else if (res.err_msg == "get_brand_wcpay_request:cancel") {
+                    $('.dialog').toggle().html('支付取消');
+                    setTimeout(() => {
+                        $('.dialog').toggle();
+                    }, 1000);
+                } else if (res.err_msg == "get_brand_wcpay_request:fail") {
+                    $('.dialog').toggle().html('支付失败');
+                    setTimeout(() => {
+                        $('.dialog').toggle()
+                    }, 1000);
+                } else if (res.err_msg == "调用支付JSAPI缺少参数：total_fee") {
+                    $('.dialog').toggle().html('prepay_id是否已失效');
+                    setTimeout(() => {
+                        $('.dialog').toggle();
+                    }, 1000);
+                }
+            })
+        }
+
+        /* ----- 调用支付JSapi支付 ----- */
+        function tradePay(tradeNO) {
+            var options = {
+                "tradeNO": tradeNO //这个值即取自上面pay_info参数里的tradeNO的值
+            };
+            AlipayJSBridge.call('tradePay', options, function (result) {
+                if (result.resultCode == '9000') {
+                    // location.href = ""; // 支付成功后跳转处理
+                    $('h2').show().html('支付成功')
+                } else if (result.resultCode == '4000') {
+                    $('h2').show().html('支付失败')
+                } else if (result.resultCode == '6001') {
+                    $('h2').show().html('支付取消')
+                } else if (result.resultCode == '6002') {
+                    $('h2').show().html('网络连接出错')
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

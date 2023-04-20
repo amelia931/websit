@@ -1,0 +1,417 @@
+@charset "UTF-8";
+body,
+html {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+header {
+  z-index: 2;
+}
+header i {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+header h1 {
+  margin: 0;
+  font-size: 0.34rem;
+  font-weight: 500;
+  line-height: 0.86rem;
+  text-align: center;
+}
+header .navBtn span {
+  background-color: #000;
+}
+header.active-header i {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+header.active-header .navBtn span {
+  background-color: #fff;
+}
+
+.containner {
+  width: 6.66rem;
+  margin: 1.24rem auto 0;
+}
+.containner .cell {
+  margin-bottom: 0.18rem;
+}
+.containner .cell span {
+  display: block;
+  margin-bottom: 0.17rem;
+  font-size: 0.28rem;
+  font-weight: 600;
+}
+.containner .cell em {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.2rem;
+  color: red;
+}
+.containner .cell .diaminod-frame {
+  width: 100%;
+  height: 0.58rem;
+  box-sizing: border-box;
+  font-size: 0.18rem;
+  font-weight: 500;
+  line-height: 0.58rem;
+  text-indent: 0.67rem;
+  background: url(../images/diamond.png) no-repeat;
+  background-size: 0.27rem 0.27rem;
+  background-position: 0.27rem center;
+  border: 0.02rem solid #865af5;
+  border-radius: 0.1rem;
+}
+.containner .cell #id-input {
+  display: block;
+  width: 100%;
+  height: 0.62rem;
+  margin: 0;
+  box-sizing: border-box;
+  text-indent: 0.1rem;
+  border: 0.02rem solid #dfdfdf;
+  border-radius: 0.1rem;
+  outline: 0;
+}
+.containner .cell #id-input.active {
+  color: #865af5;
+  border: 0.02rem solid #865af5;
+}
+.containner .cell ul {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.containner .cell ul:after {
+  content: "";
+  width: 30%;
+}
+.containner .cell ul li {
+  position: relative;
+  overflow: hidden;
+  width: 30%;
+  height: 0.89rem;
+  box-sizing: border-box;
+  padding: 0.04rem 0;
+  margin-bottom: 0.16rem;
+  text-align: center;
+  border: 0.02rem solid #dfdfdf;
+  border-radius: 0.1rem;
+}
+.containner .cell ul li.choosed {
+  border-color: #865af5;
+}
+.containner .cell ul li span:nth-child(1) {
+  display: block;
+  margin: 0;
+  font-size: 0.32rem;
+  font-weight: 400;
+  line-height: 0.46rem;
+}
+.containner .cell ul li span:nth-child(2) {
+  display: block;
+  margin: 0;
+  font-size: 0.26rem;
+  font-weight: 400;
+  line-height: 0.34rem;
+}
+.containner .cell ul li #custom-price {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 90%;
+  height: 90%;
+  font-size: 0.22rem;
+  text-align: center;
+  border: none;
+  outline: 0;
+}
+.containner .cell ul li input#custom-price {
+  color: #865af5;
+}
+.containner .cell .pay-way-box div {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 0.63rem;
+  text-indent: 0.47rem;
+  background-repeat: no-repeat;
+  background-size: 0.33rem 0.33rem;
+  background-position: 0 center;
+}
+.containner .cell .pay-way-box div .icon {
+  position: absolute;
+  display: inline-block;
+  top: 0.15rem;
+  left: 0.15rem;
+  width: 0.33rem;
+  height: 0.33rem;
+}
+.containner .cell .pay-way-box div span {
+  padding-left: 0.1rem;
+  font-size: 0.3rem;
+  line-height: 0.63rem;
+  font-weight: normal;
+}
+.containner .cell .pay-way-box div.checked::after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 50%;
+  right: 0.3rem;
+  width: 0.19rem;
+  height: 0.15rem;
+  background: url(../images/check.png) no-repeat;
+  background-size: 95% 95%;
+  transform: translateY(-50%);
+}
+.containner .cell .guild-recharge-box {
+  position: relative;
+  width: 100%;
+  height: 0.63rem;
+  text-indent: 0.47rem;
+  background-repeat: no-repeat;
+  background-size: 0.33rem 0.33rem;
+  background-position: 0 center;
+}
+.containner .cell .guild-recharge-box .icon {
+  position: absolute;
+  display: inline-block;
+  top: 0.15rem;
+  left: 0.15rem;
+  width: 0.33rem;
+  height: 0.33rem;
+}
+.containner .cell .guild-recharge-box span {
+  padding-left: 0.1rem;
+  font-size: 0.3rem;
+  line-height: 0.63rem;
+  font-weight: normal;
+  color: #000000;
+}
+.containner .cell .warn {
+  opacity: 0;
+}
+.containner #submit-btn {
+  display: block;
+  width: 3.88rem;
+  height: 0.68rem;
+  line-height: 0.68rem;
+  margin: 0.15rem auto 0;
+  font-size: 0.28rem;
+  color: #fff;
+  background-color: #865af5;
+  border: none;
+  border-radius: 0.1rem;
+  outline: 0;
+}
+.containner #submit-btn.clicked {
+  background-color: gray;
+}
+.containner .agreeXyBox {
+  font-size: 0.2rem;
+  width: 3.88rem;
+  height: 0.22rem;
+  line-height: 0.22rem;
+  margin: 0.8rem auto 0;
+  text-align: center;
+  white-space: nowrap;
+}
+.containner .agreeXyBox span {
+  display: inline-block;
+  vertical-align: middle;
+  height: 0.22rem;
+  line-height: 0.22rem;
+}
+.containner .agreeXyBox #agreeXyCheck {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #b197f8;
+  vertical-align: middle;
+  width: 0.22rem;
+  height: 0.22rem;
+  box-sizing: border-box;
+  margin-right: 0.06rem !important;
+  border-radius: 50%;
+}
+.containner .agreeXyBox #agreeXyCheck.checked {
+  /*复选框的背景图*/
+  background: url(../images/checkBox.png) no-repeat;
+  background-size: cover;
+  background-clip: border-box;
+}
+
+.wating {
+  position: fixed;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  width: 200vw;
+  height: 200vh;
+  background: url(../images/wait.gif) rgba(0, 0, 0, 0.3) no-repeat;
+  background-size: 1rem 1rem;
+  background-position: center;
+}
+
+.fail-network {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+.fail-network p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 0.6rem;
+  font-size: 0.16rem;
+  color: red;
+  line-height: 0.6rem;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 0.1rem;
+  transform: translate(-50%, -50%);
+}
+
+.weixinMask {
+  width: 200vw;
+  height: 200vh;
+  background: url(../images/openInBrowser.png) #666666 no-repeat;
+  background-size: 100vw 100vh;
+  background-position: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  display: none;
+}
+
+.resMaskS {
+  width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  display: none;
+}
+.resMaskS .title {
+  position: absolute;
+  width: 100%;
+  top: 1.5rem;
+  text-align: center;
+}
+.resMaskS .title i {
+  display: inline-block;
+  width: 0.46rem;
+  height: 0.46rem;
+  background: url(../images/resS.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+  vertical-align: middle;
+}
+.resMaskS .title span {
+  font-size: 0.26rem;
+  color: #b197f8;
+  vertical-align: middle;
+}
+.resMaskS .resPrice {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+.resMaskS .resPrice i {
+  vertical-align: top;
+  font-size: 0.45rem;
+  color: #333333;
+}
+.resMaskS .resPrice span {
+  vertical-align: top;
+  font-size: 0.8rem;
+  color: #333333;
+}
+.resMaskS .resMaskSBtn {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2.8rem;
+  height: 0.74rem;
+  line-height: 0.74rem;
+  text-align: center;
+  color: #ffffff;
+  font-size: 0.32rem;
+  border-radius: 0.37rem;
+  background: #b197f8;
+}
+
+.resMaskF {
+  width: 100vw;
+  height: 100vh;
+  background: #7d7d7d;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  display: none;
+}
+.resMaskF .innder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5.5rem;
+  height: 4.4rem;
+  background: #ffffff;
+  border: 1px solid #707070;
+  opacity: 1;
+  border-radius: 0.2rem;
+}
+.resMaskF .innder i {
+  position: absolute;
+  top: 0.3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  width: 1.08rem;
+  height: 1.26rem;
+  background: url(../images/resF.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.resMaskF .innder p {
+  position: absolute;
+  top: 2.06rem;
+  width: 100%;
+  font-weight: bold;
+  font-size: 0.32rem;
+  color: #111111;
+  text-align: center;
+}
+.resMaskF .innder .resMaskFBtn {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2.8rem;
+  height: 0.74rem;
+  line-height: 0.74rem;
+  text-align: center;
+  color: #ffffff;
+  font-size: 0.32rem;
+  border-radius: 0.37rem;
+  background: #b197f8;
+}
+
+/*# sourceMappingURL=m_pay.css.map */

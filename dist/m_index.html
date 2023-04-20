@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>声优圈-语音聊天交友大神陪练组队开黑</title>
+    <script type="text/javascript">
+        (function () {
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+            var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+            if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) { } else {
+                window.location.href = "index.html"
+            }
+        })()
+    </script>
+    <script>
+            (function (doc, win) {
+                var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth) return;
+                        if (clientWidth >= 750) {
+                            docEl.style.fontSize = '100px';
+                        } else {
+                            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                        }
+                    };
+                if (!doc.addEventListener) return;
+                win.addEventListener(resizeEvt, recalc, false);
+                doc.addEventListener('DOMContentLoaded', recalc, false);
+
+            })(document, window);
+    </script>
+    
+    <script src="https://lib.baomitu.com/mobile-detect/1.4.5/mobile-detect.min.js" charset="utf-8" ></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.1/mobile-detect.min.js"></script>
+    <script>
+        (function(){
+        window.alert = function(name){
+            var iframe = document.createElement("IFRAME");
+            iframe.style.display="none";
+            iframe.setAttribute("src", 'data:text/plain');
+            document.documentElement.appendChild(iframe);
+            window.frames[0].window.alert(name);
+            iframe.parentNode.removeChild(iframe);
+        }
+    })();
+    </script>
+   <script>
+        function judgeBrand() {
+           let sUserAgent=navigator.userAgent.replace(/([^a-zA-z0-9\-]+)/g, s0 => '').toLowerCase()
+            const isWeixin = sUserAgent.includes("micromessenger");
+            const isWeixin1 = sUserAgent.includes("wexin");
+            const isWeixin2 = sUserAgent.includes("wechat");
+            if(isWeixin||isWeixin1||isWeixin2){
+                alert('请用系统自带内部浏览器打开')
+                return
+            }
+            let url=''
+            if (sUserAgent.includes('mi')) {
+                url='mimarket://details?id=com.mingrizhixing.planet'
+            }
+            
+            let isIphone = sUserAgent.includes("iphone");
+            let isHuawei = sUserAgent.includes("huawei");
+            let isHonor = sUserAgent.includes("honor");
+            let isOppo = sUserAgent.includes("oppo");
+            let isOppoR15 = sUserAgent.includes("pacm00");
+            let isVivo = sUserAgent.includes("vivo");
+            let isXiaomi = sUserAgent.includes("mi");
+            let isXiaomi2s = sUserAgent.includes("mix");
+            let isRedmi = sUserAgent.includes("redmi");
+            let isSamsung = sUserAgent.includes("sm-");
+            if (isIphone) {
+                url='itms-appss://apps.apple.com/cn/app/id1572579272';
+            } else if (isHuawei || isHonor) {
+                url='appmarket://details?id=com.mingrizhixing.planet';
+            } else if (isOppo || isOppoR15) {
+                url='oppomarket://details?id=com.mingrizhixing.planet';
+            } else if (isVivo) {
+                url='vivomarket://details?id=com.mingrizhixing.planet';;
+            } else if (isXiaomi || isRedmi || isXiaomi2s) {
+                url='mimarket://details?id=com.mingrizhixing.planet';
+            } else if (isSamsung) {
+                url='samsungapps://ProductDetail/com.mingrizhixing.planet';;
+            } else {
+                url='https://sj.qq.com/appdetail/com.mingrizhixing.planet';
+            }
+            return url
+        }
+      
+        
+        function replace() {
+            let brand=judgeBrand()
+            if(brand){
+                alert('即将跳转到应用商店')
+                window.location.replace(brand)
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/m_public.css">
+    <link rel="stylesheet" href="css/m_index.css">
+    <link rel="icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="keywords"
+        content="声优圈,声优圈互动,陪玩,语音交友,开黑,连麦,同城交友,游戏陪玩,手游公会,开黑语音,美女交友,交友约会,吃鸡开黑,王者荣耀开黑,绝地求生陪玩,LOL陪玩，王者荣耀陪玩,英雄联盟陪玩,游戏,陪练,线上陪练,直播,聊天室，声优，真人，比心陪练，tt语音" />
+    <meta name="description"
+        content="声优圈app。是一款通过“语音连麦互动，陌生人语音交友，游戏上分陪练的社交类app。高能陪练甜蜜双排，国服最强王者带你上分。大神在线一对一指导，美女声优连麦互动，还有连麦狂欢趴语音K歌，谁是卧底、狼人杀、你画我猜等超多趣味玩法”" />
+</head>
+
+<body>
+    <header>
+        <i></i>
+        <div class="navBtn">
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+    <div class="swiper-container clearfix">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img class="video" src="vido/m-video.webp" alt="">
+                <p class="intro-and-down">
+                    <img src="images/introduce1.png" alt="">
+                    <span>玩法丰富&nbsp;/&nbsp;亲密互动&nbsp;/&nbsp;炫酷礼物</span>
+                    <i class="download-btn" onclick="replace()">
+                        <a class="open-app"></a>
+                    </i>
+                </p>
+                <i class="up-arrow"></i>
+            </div>
+            <div class="swiper-slide">
+                <div class="index-2-phone">
+                    <div class="index-2-icon-1"></div>
+                    <div class="index-2-icon-2"></div>
+                    <div class="index-2-icon-3"></div>
+                </div>
+                <div class="index-box-introduce">
+                    <h2>语音派对新玩法</h2>
+                    <p>人人都是大明星，粉丝多到爆</p>
+                    <p>礼物拿不停，收赞到手软</p>
+                    <span class="down-span"><a class="goIosStore"
+                            href="https://apps.apple.com/cn/app/id1572579272"></a></span>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="index-3-phone">
+                    <div class="index-3-icon-1"></div>
+                    <div class="index-3-icon-2"></div>
+                    <div class="index-3-icon-3"></div>
+                </div>
+                <div class="index-box-introduce">
+                    <h2>多种状态随心发</h2>
+                    <p>海量用户超广社交圈,精彩个性等你展示</p>
+                    <span class="down-span"><a class="goIosStore"
+                            href="https://apps.apple.com/cn/app/id1572579272"></a></span>
+                </div>
+
+            </div>
+            <div class="swiper-slide">
+                <div class="index-4-phone">
+                    <div class="index-4-icon-1"></div>
+                    <div class="index-4-icon-2"></div>
+                    <div class="index-4-icon-3"></div>
+                </div>
+                <div class="index-box-introduce">
+                    <h2>社交名片</h2>
+                    <p>记录生活 随时记录用户每一面</p>
+                    <p>100%真人认证&ensp;拒绝虚假</p>
+                    <span class="down-span"><a class="goIosStore"
+                            href="https://apps.apple.com/cn/app/id1572579272"></a></span>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="index-box-beian">
+                    <p><i></i> &copy;成都铭日芷星科技有限公司</p>
+                    <p><i></i> &ensp;<a
+                            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51019002003788">川公网安备&ensp;51019002003788号</a>
+                    </p>
+                    <p><a href="https://beian.miit.gov.cn">蜀ICP备2021013140号-1</a></p>
+                    <p><a target="_blank" href="https://static.scmingrizhixing.cn/weindex.jpg">网络文化经营许可证:&ensp;川网文(2020)
+                            5039-1034号</a></p>
+                    <p>公司地址:&ensp;四川省成都市锦江区工业园区锦华路三段88号汇融国际广场1号楼B座8层82278</p>
+                    <p>联系客服:&ensp;(028)62712161&ensp;工作日&ensp;9:30-18:00</p>
+                    <p><a target="_blank" href="https://static.scmingrizhixing.cn/dxindex.jpg">
+                            增值电信业务经营许可证:&ensp;川B2-20210602</a></p>
+                    <p><i></i>&ensp;<a href="https://jbts.mct.gov.cn/">12318全国文化市场举报网站</a></p>
+                    <p><i></i>&ensp;<a href="https://www.12377.cn/">网上有害信息举报专区</a></p>
+                    <p><i></i>&ensp;<a href="http://www.shdf.gov.cn/">中国扫黄打非-网上举报</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="aside">
+        <ul class="aside-list" id="aside">
+            <li data-index="0" class="active"></li>
+            <li data-index="1"></li>
+            <li data-index="2"></li>
+            <li data-index="3"></li>
+            <li data-index="4"></li>
+        </ul>
+    </div>
+    <div class="navMask">
+        <p><a href="pages/m_pay.html">充值&emsp;></a></p>
+        <p><a href="pages/m_about.html">关于我们&emsp;></a></p>
+        <p><a href="pages/m_download.html">下载地址&emsp;></a></p>
+        <p class="weixin">
+            <img src="images/weixinerweima.jpg" alt="">
+            微信公众号
+        </p>
+    </div>
+    <div class="dialog">请在浏览器中打开下载</div>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/m_index.js"></script>
+</body>
+
+</html>

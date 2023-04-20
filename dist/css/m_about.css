@@ -1,0 +1,153 @@
+header h1 {
+  margin: 0;
+  font-size: 0.34rem;
+  font-weight: 500;
+  line-height: 0.86rem;
+  text-align: center;
+}
+header i {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+header .navBtn span {
+  background-color: #000;
+}
+header.active-header i {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+header.active-header .navBtn span {
+  background-color: #fff;
+}
+
+.containner {
+  position: absolute;
+  top: 1.54rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.containner h2 {
+  margin: 0 0 0.43rem;
+  font-size: 0.34rem;
+  font-weight: 600;
+  text-align: center;
+}
+.containner .introduce {
+  width: 6.64rem;
+  margin: 0 auto 0.31rem;
+  font-size: 0.22rem;
+  line-height: 0.29rem;
+}
+.containner .introduce-down {
+  width: 6.64rem;
+  margin: 0 auto;
+  font-size: 0.22rem;
+}
+.containner .introduce-down .introudce-left p:nth-child(1) {
+  margin-bottom: 0.36rem;
+}
+.containner .introduce-down .introudce-left p:nth-child(2), .containner .introduce-down .introudce-left p:nth-child(3), .containner .introduce-down .introudce-left p:nth-child(4) {
+  overflow: hidden;
+  width: 100%;
+  line-height: 0.31rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.containner .introduce-down .introudce-left p:nth-child(5) {
+  margin: 0.28rem 0 0.31rem;
+}
+.containner .introduce-down .introudce-right {
+  text-align: center;
+}
+.containner .introduce-down .introudce-right img {
+  display: block;
+  width: 1.45rem;
+  height: 1.45rem;
+  margin: 0 auto 0.12rem;
+}
+.containner .introduce-down .introudce-right span {
+  display: block;
+  width: 1.4rem;
+  height: 0.23rem;
+  margin: 0 auto;
+  font-size: 0.18rem;
+  line-height: 0.23rem;
+  white-space: nowrap;
+  background: url(../images/weixin.png) no-repeat;
+  padding-left: 0.2rem;
+  background-size: 0.26rem 0.22rem;
+}
+
+.bei-an {
+  text-align: center;
+  margin-top: 0.25rem;
+  font-size: 0.18rem;
+}
+.bei-an a {
+  color: #000;
+  text-decoration: underline;
+}
+.bei-an P:nth-child(1) {
+  margin-bottom: 0.28rem;
+}
+.bei-an P:nth-child(1) i {
+  display: inline-block;
+  width: 0.17rem;
+  height: 0.22rem;
+  vertical-align: middle;
+  background: url(../images/position_black.png) no-repeat;
+  background-size: cover;
+}
+.bei-an P:nth-child(2) {
+  margin-bottom: 0.27rem;
+}
+.bei-an P:nth-child(2) i {
+  display: inline-block;
+  width: 0.28rem;
+  height: 0.3rem;
+  vertical-align: middle;
+  background: url(../images/cgwab.png) no-repeat;
+  background-size: 98% 98%;
+}
+.bei-an P:nth-child(3), .bei-an P:nth-child(4) {
+  margin-bottom: 0.27rem;
+}
+.bei-an P:nth-child(5) {
+  width: 5.04rem;
+  margin: 0 auto 0.27rem;
+  line-height: 0.35rem;
+  text-align: left;
+}
+.bei-an P:nth-child(6), .bei-an P:nth-child(7) {
+  margin-bottom: 0.26rem;
+}
+.bei-an P:nth-child(8) {
+  margin-bottom: 0.27rem;
+}
+.bei-an P:nth-child(8) i {
+  display: inline-block;
+  width: 0.3rem;
+  height: 0.32rem;
+  vertical-align: middle;
+  background: url(../images/12318.png) no-repeat;
+  background-size: cover;
+}
+.bei-an P:nth-child(9) {
+  margin-bottom: 0.28rem;
+}
+.bei-an P:nth-child(9) i {
+  display: inline-block;
+  width: 0.33rem;
+  height: 0.29rem;
+  vertical-align: middle;
+  background: url(../images/yhjb.png) no-repeat;
+  background-size: cover;
+}
+.bei-an P:nth-child(10) i {
+  display: inline-block;
+  width: 0.28rem;
+  height: 0.28rem;
+  vertical-align: middle;
+  background: url(../images/shdf.png) no-repeat;
+  background-size: cover;
+}
+
+/*# sourceMappingURL=m_about.css.map */

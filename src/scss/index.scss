@@ -1,0 +1,563 @@
+body,
+html {
+  width: 100vw;
+  height: 100vh;
+}
+
+@keyframes move_wave {
+  0% {
+    transform: translateX(0) translateZ(0) scaleY(1);
+  }
+
+  50% {
+    transform: translateX(-25%) translateZ(0) scaleY(0.55);
+  }
+
+  100% {
+    transform: translateX(-50%) translateZ(0) scaleY(1);
+  }
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+
+  .swiper-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .swiper-slide {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+
+      .index-1-box {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: url(../images/video_bg.jpg);
+        background-size: cover;
+
+        .bg {
+          position: relative;
+          z-index: 1;
+          width: 100%;
+          height: auto;
+          min-height: 100%;
+          -o-object-fit: cover;
+          object-fit: cover;
+        }
+
+        .introduce-and-download {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 100;
+          width: 100vw;
+          height: 100vh;
+
+          .introduce-image {
+            position: relative;
+            left: 50%;
+            width: 10.47rem;
+            height: 0.95rem;
+            margin-top: 3.46rem;
+            transform: translateX(-50%);
+          }
+
+          .introduce-txt {
+            margin-top: 0.28rem;
+            font-size: 0.3rem;
+            line-height: 0.3rem;
+            color: #fff;
+            text-align: center;
+          }
+
+          .download-box {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 0.6rem;
+            margin-top: 0.46rem;
+            text-align: center;
+
+            .download-btn {
+              position: relative;
+              display: block;
+              width: 1.76rem;
+              height: 0.6rem;
+              margin: 0 0.21rem;
+
+              img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 1.76rem;
+                height: 0.6rem;
+              }
+
+              &.android:hover::after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 2rem;
+                background: url(../images/android_ewm.png) no-repeat;
+                background-position: center 0.9rem;
+                background-size: 1.1rem 1.1rem;
+                border-radius: 0.2rem;
+              }
+
+              &.ios:hover::after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 2rem;
+                background: url(../images/ios_ewm.png) no-repeat;
+                background-position: center 0.9rem;
+                background-size: 1.1rem 1.1rem;
+                border-radius: 0.2rem;
+              }
+            }
+          }
+        }
+      }
+
+      .waveWrapper {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 3.3rem;
+
+        .waveWrapperInner {
+          position: absolute;
+          width: 100%;
+          height: 3.3rem;
+          background-image: linear-gradient(to top, #c6fff9 0, #fff 100%);
+
+          .wave {
+            position: absolute;
+            left: 0;
+            z-index: 1;
+            width: 200%;
+            height: 100%;
+            background-repeat: repeat no-repeat;
+            background-position: 0 bottom;
+            transform-origin: center bottom;
+
+            &.waveMiddle {
+              background-size: 50% 100%;
+            }
+
+            &.waveBottom {
+              background-size: 50% 100%;
+            }
+          }
+        }
+
+        &.waveAnimation {
+          .waveMiddle {
+            animation: move_wave 20s linear infinite;
+          }
+
+          .waveBottom {
+            animation: move_wave 20s linear infinite;
+          }
+        }
+      }
+
+      .index-2-box {
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        z-index: 100;
+        width: 13.57rem;
+        height: 7.38rem;
+        margin: 0 auto;
+        transform: translateX(-50%);
+
+        .index-2-icon-1 {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 5;
+          width: 1.75rem;
+          height: 0.97rem;
+          background: url(../images/ch.png);
+          background-size: cover;
+        }
+
+        .index-2-icon-2 {
+          position: absolute;
+          top: 0;
+          left: 1.55rem;
+          width: 3.47rem;
+          height: 7.04rem;
+          background: url(../images/phone_1.webp);
+          background-size: cover;
+        }
+
+        .index-2-icon-2-2 {
+          position: absolute;
+          top: 0.36rem;
+          left: 5.55rem;
+          width: 3.1rem;
+          height: 6.28rem;
+          background: url(../images/phone_2.webp);
+          background-size: cover;
+        }
+
+        .index-2-icon-3 {
+          position: absolute;
+          top: 1.73rem;
+          left: 0.52rem;
+          width: 8.81rem;
+          height: 3.16rem;
+          background: url(../images/tuoyuan.png);
+          background-size: cover;
+        }
+
+        .index-2-icon-4 {
+          position: absolute;
+          top: 0.52rem;
+          left: 5.32rem;
+          width: 0.37rem;
+          height: 0.33rem;
+          background: url(../images/aixinxiao.png);
+          background-size: cover;
+        }
+
+        .index-2-icon-5 {
+          position: absolute;
+          top: 1.49rem;
+          left: 8.53rem;
+          width: 0.56rem;
+          height: 0.6rem;
+          background: url(../images/aixin.png);
+          background-size: cover;
+        }
+
+        .index-2-icon-6 {
+          position: absolute;
+          top: 3.18rem;
+          left: 8.35rem;
+          width: 0.68rem;
+          height: 1.15rem;
+          background: url(../images/caidai.png);
+          background-size: cover;
+        }
+
+        .index-2-icon-7 {
+          position: absolute;
+          top: 2.4rem;
+          left: 0.67rem;
+          width: 0.47rem;
+          height: 0.63rem;
+          background: url(../images/lingxin2.png);
+          background-size: cover;
+        }
+
+        .index-2-icon-8 {
+          position: absolute;
+          top: 2.68rem;
+          left: 1.27rem;
+          width: 0.78rem;
+          height: 1.06rem;
+          background: url(../images/lingxin.png);
+          background-size: cover;
+        }
+
+        .index-2-icon-9 {
+          position: absolute;
+          top: 3.8rem;
+          left: 4.14rem;
+          width: 1.61rem;
+          height: 1.18rem;
+          background: url(../images/chm.png);
+          background-size: cover;
+        }
+
+        .index-2-icon-10 {
+          position: absolute;
+          top: 5.43rem;
+          left: 7.22rem;
+          width: 2.11rem;
+          height: 2.18rem;
+          background: url(../images/maxbq.png);
+          background-size: cover;
+        }
+
+        .index-2-introduce {
+          float: right;
+          width: 3.5rem;
+          margin-top: 1.8rem;
+          text-align: center;
+
+          h2 {
+            margin: 0 0 0.12rem;
+            font-size: 0.46rem;
+            font-weight: 500;
+            line-height: 0.46rem;
+          }
+
+          p {
+            font-size: 0.24rem;
+            line-height: 0.46rem;
+            white-space: nowrap;
+          }
+        }
+      }
+
+      .index-3-box {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        overflow: hidden;
+        z-index: 500;
+        width: 13.31rem;
+        height: 7.37rem;
+        transform: translateX(-50%);
+
+        .index-3-icon-1 {
+          position: absolute;
+          top: 0;
+          left: 3.02rem;
+          width: 3.35rem;
+          height: 6.8rem;
+          background: url(../images/phone_3.webp);
+          background-size: cover;
+        }
+
+        .index-3-icon-2 {
+          position: absolute;
+          top: 1.74rem;
+          left: 0.2rem;
+          z-index: 5;
+          width: 1.26rem;
+          height: 1.58rem;
+          background: url(../images/reqiqiu.png);
+          background-size: cover;
+        }
+
+        .index-3-icon-3 {
+          position: absolute;
+          top: 5.4rem;
+          left: 0;
+          width: 2.02rem;
+          height: 2.04rem;
+          background: url(../images/zan.png);
+          background-size: cover;
+        }
+
+        .index-3-icon-4 {
+          position: absolute;
+          top: 2.3rem;
+          left: 0.93rem;
+          width: 7.64rem;
+          height: 2.49rem;
+          background: url(../images/tuoyuan_2.png);
+          background-size: 99.9% 99.9%;
+        }
+
+        .index-3-icon-5 {
+          position: absolute;
+          top: 0.49rem;
+          left: 7.03rem;
+          z-index: -1;
+          width: 0.74rem;
+          height: 0.97rem;
+          background: url(../images/lvgan.png);
+          background-size: cover;
+        }
+
+        .index-3-icon-6 {
+          position: absolute;
+          top: 3.6rem;
+          left: 7.9rem;
+          width: 0.78rem;
+          height: 1.06rem;
+          background: url(../images/lingxin.png);
+          background-size: cover;
+        }
+
+        .index-3-icon-7 {
+          position: absolute;
+          top: 3.48rem;
+          left: 7.34rem;
+          width: 0.47rem;
+          height: 0.63rem;
+          background: url(../images/lingxin2.png);
+          background-size: cover;
+        }
+
+        .index-3-icon-8 {
+          position: absolute;
+          top: 6rem;
+          left: 8rem;
+          width: 1.36rem;
+          height: 1.36rem;
+          background: url(../images/huangnianxiao.png);
+          background-size: cover;
+        }
+
+        .index-3-icon-9 {
+          position: absolute;
+          top: 3.8rem;
+          left: 4.8rem;
+          width: 1.18rem;
+          height: 1.02rem;
+          background: url(../images/xiguayongchia.png);
+          background-size: cover;
+        }
+
+        .index-3-introduce {
+          position: relative;
+          float: right;
+          width: 5.08rem;
+          margin-top: 1.75rem;
+
+          h2 {
+            margin: 0 0 0.28rem;
+            font-size: 0.42rem;
+            font-weight: 500;
+            text-align: center;
+          }
+
+          p {
+            font-size: 0.24rem;
+            text-align: center;
+            white-space: nowrap;
+          }
+        }
+      }
+
+      .index-4-box {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        width: 11.8rem;
+        height: 6.53rem;
+        transform: translateX(-50%);
+
+        .index-4-introduce {
+          float: right;
+          width: 3.33rem;
+          margin-top: 2.08rem;
+        }
+
+        .index-4-introduce h2 {
+          margin: 0 0 0.14rem;
+          font-size: 0.44rem;
+          font-weight: 500;
+          line-height: 0.36rem;
+          text-align: center;
+        }
+
+        .index-4-introduce p {
+          font-size: 0.24rem;
+          line-height: 0.4rem;
+          text-align: center;
+        }
+
+        .index-4-icon-1 {
+          position: absolute;
+          top: 0;
+          left: 1.9rem;
+          width: 3.09rem;
+          height: 6.29rem;
+          background: url(../images/phone_4.webp);
+          background-size: cover;
+        }
+
+        .index-4-icon-2 {
+          position: absolute;
+          top: 0.2rem;
+          left: 0.33rem;
+          width: 0.93rem;
+          height: 1.13rem;
+          background: url(../images/bixina.png);
+          background-size: cover;
+        }
+
+        .index-4-icon-3 {
+          position: absolute;
+          top: 1.5rem;
+          left: 0.1rem;
+          width: 6.87rem;
+          height: 2.32rem;
+          background: url(../images/tuoyuan_3.png);
+          background-size: 99.9% 99.9%;
+        }
+
+        .index-4-icon-4 {
+          position: absolute;
+          top: 3.45rem;
+          left: 0.36rem;
+          width: 0.49rem;
+          height: 0.66rem;
+          background: url(../images/lingxin.png);
+          background-size: cover;
+        }
+
+        .index-4-icon-5 {
+          position: absolute;
+          top: 3.45rem;
+          left: 0.1rem;
+          width: 0.3rem;
+          height: 0.4rem;
+          background: url(../images/lingxin2.png);
+          background-size: cover;
+        }
+
+        .index-4-icon-6 {
+          position: absolute;
+          top: 2.65rem;
+          left: 4rem;
+          width: 1.34rem;
+          height: 0.78rem;
+          background: url(../images/pengranxindonga.png);
+          background-size: cover;
+        }
+
+        .index-4-icon-7 {
+          position: absolute;
+          top: 1rem;
+          left: 6.15rem;
+          width: 0.56rem;
+          height: 0.82rem;
+          background: url(../images/map.png);
+          background-size: cover;
+        }
+      }
+    }
+  }
+}
+
+.aside {
+  position: fixed;
+  top: 50%;
+  right: 1.46rem;
+  z-index: 100;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+
+  li {
+    width: 10px;
+    height: 10px;
+    margin-bottom: 46px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &.active {
+      background: #8c61f9;
+      border-color: #8c61f9;
+    }
+  }
+}

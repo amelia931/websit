@@ -1,0 +1,33 @@
+{
+    "compact": true,
+    "controlFlowFlattening": true,
+    "controlFlowFlatteningThreshold": 0.75,
+    "deadCodeInjection": true,
+    "deadCodeInjectionThreshold": 0.4,
+    "identifierNamesGenerator": "hexadecimal",
+    "numbersToExpressions": true,
+    "renameGlobals": false,
+    "selfDefending": true,
+    "simplify": true,
+    "splitStrings": true,
+    "splitStringsChunkLength": 10,
+    "stringArray": true,
+    "stringArrayEncoding": [
+        "base64"
+    ],
+    "stringArrayIndexShift": true,
+    "stringArrayRotate": true,
+    "stringArrayShuffle": true,
+    "stringArrayWrappersCount": 2,
+    "stringArrayWrappersChainedCalls": true,
+    "stringArrayWrappersParametersMaxCount": 4,
+    "stringArrayWrappersType": "function",
+    "stringArrayThreshold": 0.75,
+    "unicodeEscapeSequence": false,
+    "transformObjectKeys": true,
+    "debugProtection": false,
+    "debugProtectionInterval": false,
+    "log": true,
+    "disableConsoleOutput": false,
+    "seed": "mrzx"
+}
